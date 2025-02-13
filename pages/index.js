@@ -1,6 +1,7 @@
 function Home() {
     var nome = 'Matheus Glauber'
-    return <h1>Olá {nome}, Bem vindo ao TABNEWS!</h1>
+    var namorada = 'Laissa Albuquerque'
+    return <h1>Olá {namorada}, {nome} te ama pra CARAMBA!</h1>
 }
 
 export default Home;
