@@ -1,5 +1,6 @@
 function Home() {
-    return <h1>Olá Matheus, Tudo bem?</h1>
+    var nome = 'Matheus Glauber'
+    return <h1>Olá {nome}, Tudo bem?</h1>
 }
 
 export default Home;
