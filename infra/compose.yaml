@@ -1,0 +1,14 @@
+services:
+  database:
+    image: postgres:17.5-alpine3.22
+    environment:
+      POSTGRES_USER: super.user
+      POSTGRES_PASSWORD: admin1995##
+      POSTGRES_DB: tabnews_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
