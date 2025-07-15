@@ -9,10 +9,6 @@ async function query(queryObject) {
   return result;
 }
 
-export default {
-  query: query,
-};
-
 function configDatabaseParameters() {
   return {
     host: process.env.POSTGRES_HOST,
@@ -22,3 +18,7 @@ function configDatabaseParameters() {
     password: process.env.POSTGRES_PASSWORD
   }
 }
+
+export default {
+  query: query,
+};
