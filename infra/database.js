@@ -15,10 +15,10 @@ export default {
 
 function configDatabaseParameters() {
   return {
-    user: 'super.user',
-    password: 'admin1995##',
-    host: 'localhost',
-    port: 5432,
-    database: 'tabnews_db'
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    database: process.env.POSTGRES_DB,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD
   }
 }
