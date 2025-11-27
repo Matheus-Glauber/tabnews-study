@@ -2,11 +2,16 @@ import { Client } from "pg";
 
 async function query(queryObject) {
   const client = new Client(configDatabaseParameters());
-  await client.connect();
-  const result = await client.query(queryObject);
-  await client.end();
+  try {
+    await client.connect();
+    const result = await client.query(queryObject);
 
-  return result;
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await client.end();
+  }
 }
 
 function configDatabaseParameters() {
@@ -15,8 +20,8 @@ function configDatabaseParameters() {
     port: process.env.POSTGRES_PORT,
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD
-  }
+    password: process.env.POSTGRES_PASSWORD,
+  };
 }
 
 export default {
