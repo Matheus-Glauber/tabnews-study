@@ -10,7 +10,7 @@ test("GET to /api/v1/status should return 200", async () => {
       status: "healthy",
       version: "17.5",
       max_connections: "100",
-      opened_connections: "6",
+      opened_connections: "1",
     },
   });
 

@@ -2,11 +2,16 @@ import database from "infra/database";
 
 async function status(request, response) {
   const updateAt = new Date().toISOString();
-  const max_connections = await database.query("SHOW max_connections;");
-  const opened_connections = await database.query(
-    "SELECT count(*) FROM pg_stat_activity;",
+  const max_connections = await database.query(
+    "SHOW max_connections;"
   );
-  const postgresVersion = await database.query("SHOW server_version;");
+  const opened_connections = await database.query(
+    "SELECT count(*) FROM pg_stat_activity WHERE datname = 'tabnews_db';",
+  );
+  const postgresVersion = await database.query(
+    "SHOW server_version;"
+  );
+
   response.status(200).json({
     update_at: updateAt,
     dependencies: {
