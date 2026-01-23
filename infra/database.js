@@ -22,10 +22,21 @@ function configDatabaseParameters() {
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
-    ssl: process.env.NODE_ENV === 'development' ? false : true,
+    ssl: getSSLValues(),
   };
+
   console.log(`Parameters: { Host: ${parameters.host}, port: ${parameters.port}, database: ${parameters.database} }`);
   return parameters
+}
+
+function getSSLValues() {
+  if (process.env.PG_CA) {
+    return {
+      ca: process.env.PG_CA,
+    }
+  }
+
+  return process.env.NODE_ENV === "development" ? false : true;
 }
 
 export default {
