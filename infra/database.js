@@ -16,7 +16,7 @@ async function query(queryObject) {
 }
 
 function configDatabaseParameters() {
-  const parameters = {
+  return {
     host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT,
     database: process.env.POSTGRES_DB,
@@ -24,9 +24,6 @@ function configDatabaseParameters() {
     password: process.env.POSTGRES_PASSWORD,
     ssl: getSSLValues(),
   };
-
-  console.log(`Parameters: { Host: ${parameters.host}, port: ${parameters.port}, database: ${parameters.database} }`);
-  return parameters
 }
 
 function getSSLValues() {
